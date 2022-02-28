@@ -1,13 +1,13 @@
 import pygame
 import random
 
-class Laser(pygame.sprite.Sprite):
+class Esfera(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
 
-        self.image = pygame.image.load('data/raiolaser.png')
-        self.image = pygame.transform.scale(self.image, [100, 100])
-        self.rect = pygame.Rect(50, 50, 100, 100)
+        self.image = pygame.image.load('data/esfera.png')
+        self.image = pygame.transform.scale(self.image, [60, 60])
+        self.rect = self.image.get_rect()
 
         self.rect.x = 840 + random.randint(1, 400)
         self.rect.y = random.randint(2, 400)

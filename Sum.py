@@ -9,7 +9,7 @@ class Sum(pygame.sprite.Sprite):
         self.rect = pygame.Rect(150, 250, 200, 200)
 
         self.speed = 0
-        self.acceleration = 0.1
+        self.acceleration = 0.7
 
     def update(self, *args):
         keys = pygame.key.get_pressed()
@@ -17,12 +17,12 @@ class Sum(pygame.sprite.Sprite):
         if keys[pygame.K_d]:
             self.rect.x += 2
         if keys[pygame.K_a]:
-            self.rect.x -= 1
+            self.rect.x -= 2
         
         if keys[pygame.K_w]:
-            self.rect.y -= 1
+            self.rect.y -= 2
         if keys[pygame.K_s]:
-            self.rect.y += 1
+            self.rect.y += 2
 
         if self.rect.top < 0 :
             self.rect.top = 0
