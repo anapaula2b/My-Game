@@ -7,7 +7,7 @@ class Tiro(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.image = pygame.image.load('data/raiolaser.png')
-        self.image = pygame.transform.scale(self.image, [50, 50])
+        self.image = pygame.transform.scale(self.image, [50, 25])
         self.rect = self.image.get_rect()
 
     

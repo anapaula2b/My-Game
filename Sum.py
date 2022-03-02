@@ -5,7 +5,7 @@ class Sum(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.image = pygame.image.load('data/fanton.png')
-        self.image = pygame.transform.scale(self.image, [100, 100])
+        self.image = pygame.transform.scale(self.image, [95, 100])
         self.rect = pygame.Rect(150, 250, 200, 200)
 
         self.speed = 0

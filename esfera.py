@@ -6,7 +6,7 @@ class Esfera(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.image = pygame.image.load('data/esfera.png')
-        self.image = pygame.transform.scale(self.image, [60, 60])
+        self.image = pygame.transform.scale(self.image, [50, 50])
         self.rect = self.image.get_rect()
 
         self.rect.x = 840 + random.randint(1, 400)
