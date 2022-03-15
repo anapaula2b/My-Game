@@ -4,13 +4,18 @@ from tkinter.tix import Tree
 from turtle import update 
 import pygame
 import random
-from sum import Sum
+from fanton import Fanton
 from esfera import Esfera
 from tiro import Tiro
 
 
 
 pygame.init()
+
+tela = pygame.display.set_mode([840, 480])
+
+
+
 
 display = pygame.display.set_mode([840, 480])
 pygame.display.set_caption('Meu jogo')
@@ -24,7 +29,7 @@ pontuacao = 0
 
 objG = pygame.sprite.Group()
 
-npc = pygame.sprite.Group()
+asteroideGrup = pygame.sprite.Group()
 tiroGroup = pygame.sprite.Group()
 
 
@@ -46,12 +51,12 @@ bg.image = pygame.transform.scale(bg.image, [840, 480])
 bg.rect = bg.image.get_rect()
 
 
-sum = Sum(objG)
+fanton = Fanton(objG)
 
 def canvas():
     objG.draw(display)
     objG.update()
-    npc.update()
+    asteroideGrup.update()
  
     
    
@@ -77,12 +82,12 @@ while gameLoop:
     if timer > 30:
         timer = 0
         if random.random() < 0.5:
-            newEsfera = Esfera(objG, npc)
+            newEsfera = Esfera(objG, asteroideGrup)
 
-    # collisions = pygame.sprite.spritecollide(sum, npc, FALSE)
+    # collisions = pygame.sprite.spritecollide(sum, asteroideGrup, FALSE)
     # if collisions:
     #     print('Game Over')
-    hits = pygame.sprite.groupcollide(tiroGroup, npc, True, True)
+    colisoes = pygame.sprite.groupcollide(tiroGroup, asteroideGrup, True, True)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

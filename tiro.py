@@ -1,6 +1,5 @@
 import pygame
-import random
-import math
+
 
 class Tiro(pygame.sprite.Sprite):
     def __init__(self, *groups):
@@ -9,8 +8,6 @@ class Tiro(pygame.sprite.Sprite):
         self.image = pygame.image.load('data/raiolaser.png')
         self.image = pygame.transform.scale(self.image, [50, 25])
         self.rect = self.image.get_rect()
-
-    
 
         self.speed = 6
 

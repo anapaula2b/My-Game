@@ -1,6 +1,6 @@
 import pygame
 
-class Sum(pygame.sprite.Sprite):
+class Fanton(pygame.sprite.Sprite):
     def __init__(self, *groups):
         super().__init__(*groups)
 
@@ -14,14 +14,14 @@ class Sum(pygame.sprite.Sprite):
     def update(self, *args):
         keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_d]:
+        if keys[pygame.K_RIGHT]:
             self.rect.x += 2
-        if keys[pygame.K_a]:
+        if keys[pygame.K_LEFT]:
             self.rect.x -= 2
         
-        if keys[pygame.K_w]:
+        if keys[pygame.K_UP]:
             self.rect.y -= 2
-        if keys[pygame.K_s]:
+        if keys[pygame.K_DOWN]:
             self.rect.y += 2
 
         if self.rect.top < 0 :
