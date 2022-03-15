@@ -12,17 +12,9 @@ from tiro import Tiro
 
 pygame.init()
 
-tela = pygame.display.set_mode([840, 480])
-
-
-
 
 display = pygame.display.set_mode([840, 480])
 pygame.display.set_caption('Meu jogo')
-
-WHITE = (255, 255, 255)
-pontuacao = 0
-
 
 
 #Grupos
@@ -31,7 +23,7 @@ objG = pygame.sprite.Group()
 
 asteroideGrup = pygame.sprite.Group()
 tiroGroup = pygame.sprite.Group()
-
+playerGrup = pygame.sprite.Group()
 
 
 
@@ -51,17 +43,17 @@ bg.image = pygame.transform.scale(bg.image, [840, 480])
 bg.rect = bg.image.get_rect()
 
 
-fanton = Fanton(objG)
+fanton = Fanton(playerGrup)
 
 def canvas():
     objG.draw(display)
     objG.update()
     asteroideGrup.update()
- 
-    
-   
-    
+    playerGrup.draw(display)
+    playerGrup.update()
+     
 
+life = 10
 gameLoop = True
 timer = 0
 
@@ -76,19 +68,21 @@ while gameLoop:
 
     font = pygame.font.SysFont(None, 20)
 
-
+   
     
     timer += 1
     if timer > 30:
         timer = 0
         if random.random() < 0.5:
             newEsfera = Esfera(objG, asteroideGrup)
-
-    # collisions = pygame.sprite.spritecollide(sum, asteroideGrup, FALSE)
-    # if collisions:
-    #     print('Game Over')
-    colisoes = pygame.sprite.groupcollide(tiroGroup, asteroideGrup, True, True)
-    
+   
+    collisions1 = pygame.sprite.groupcollide(tiroGroup, asteroideGrup, True, True)
+    collisions2 = pygame.sprite.groupcollide(playerGrup, asteroideGrup, False, True)
+    if collisions2:
+        life -= 1
+    if life == 0:
+        fanton.kill()
+            
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameLoop = False
@@ -96,13 +90,10 @@ while gameLoop:
             if event.key == pygame.K_SPACE:
                 shot.play()
                 newTiro = Tiro(objG, tiroGroup)
-                newTiro.rect.center = sum.rect.center
-    # if hits == True:
-    #     pontuacao += 1
-    #     pontuacao1 = font.render(str(pontuacao), True, WHITE)
-    #     display.blit(pontuacao1, [10, 10])
-    #     pygame.display.flip()
+                newTiro.rect.center = fanton.rect.center
 
+   
+            
                 
 
         

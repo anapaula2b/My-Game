@@ -15,5 +15,5 @@ class Tiro(pygame.sprite.Sprite):
     def update(self, *args):
         self.rect.x += self.speed 
 
-        if self.rect.left < 0: 
+        if self.rect.left <= 1: 
             self.kill()
